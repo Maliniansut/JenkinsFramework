@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,7 +24,8 @@ public class TestLoginPositiveNegative {
         }
     }
 
-    @Test
+    @Test(enabled = true, priority = 1, groups = {"positive","sanity","stage"})
+    @Description("Verify url is same and no redirection is done.")
     public void testVwoLoginPositive() {
         driver.get("https://app.vwo.com");
         Assert.assertEquals(driver.getTitle(), "Login - VWO");
@@ -48,7 +50,7 @@ public class TestLoginPositiveNegative {
                 "Expected no page redirection after login");
     }
 
-    @Test
+    @Test(priority = 2 , groups={"negative","sanity","regression"})
     public void testVwoLoginNegative() {
         driver.get("https://app.vwo.com");
         Assert.assertEquals(driver.getTitle(), "Login - VWO");
